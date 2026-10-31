@@ -267,15 +267,14 @@ document.getElementById('prev').onclick=()=>go(-1);document.getElementById('next
 addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(-1);if(e.key==='ArrowRight')go(1)});
 fill(0);
 
-/* ---- class vote (saved in this browser only) ---- */
+/* ---- class vote ---- */
 const OPTS=[
  ['A','Radical transparency','Publish the full investigation, apologise publicly, and push a free software fix to every car.'],
  ['B','Price and incentive push','Keep the message on the product: cut prices, add free charging and extend warranties to win back buyers.'],
  ['C','Change the narrative','Launch a sustainability and innovation campaign, using owner stories and ambassadors to shift focus.']
 ];
-/* Paste your Firebase Realtime Database URL here to make voting live for everyone.
-   Example: 'https://your-project-default-rtdb.firebaseio.com'   Leave '' for local-only mode. */
-const DB_URL='';
+
+const DB_URL='https://tesla-marketing-default-rtdb.firebaseio.com/';
 const KEY='tesla_vote_v2',N=OPTS.length;
 const admin=/[?&]admin\b/.test(location.search);
 const box=document.getElementById('opts'),pm=document.getElementById('pm'),stat=document.getElementById('status');
