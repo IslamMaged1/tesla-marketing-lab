@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tesla | Marketing Case Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Michroma&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090b;--panel:rgba(255,255,255,.035);--line:rgba(255,255,255,.1);--red:#e31937;--red2:#ff3b57;--txt:#f2f2f4;--mut:#9a9aa3;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:var(--bg);color:var(--txt);font-family:Inter,system-ui,sans-serif;line-height:1.6;overflow-x:hidden;
+background-image:radial-gradient(ellipse 60% 40% at 80% 0,rgba(227,25,55,.12),transparent 70%),radial-gradient(ellipse 50% 30% at 0 60%,rgba(227,25,55,.06),transparent 70%)}
+h1,h2,h3{font-family:Michroma,Inter,sans-serif;font-weight:400;letter-spacing:.04em}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 5vw;background:rgba(9,9,11,.75);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.logo{font-family:Michroma;letter-spacing:.35em;font-size:15px}
+.links{display:flex;gap:28px;font-size:14px;color:var(--mut)}
+.links a{position:relative;padding:6px 0;transition:color .3s}
+.links a:hover,.links a.on{color:#fff}
+.links a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--red);box-shadow:0 0 10px var(--red);transform:scaleX(0);transition:transform .35s var(--ease)}
+.links a.on::after{transform:scaleX(1)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:40px;border:1px solid var(--line);font-size:14px;font-weight:500;cursor:pointer;background:none;color:#fff;font-family:inherit;transition:.3s var(--ease)}
+.btn.red{background:linear-gradient(135deg,var(--red),#b5122b);border-color:var(--red);box-shadow:0 0 24px rgba(227,25,55,.35)}
+.btn:hover{transform:translateY(-2px);border-color:var(--red)}
+.btn.red:hover{box-shadow:0 0 34px rgba(227,25,55,.6)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:26px;cursor:pointer}
+section{padding:110px 5vw;max-width:1280px;margin:auto}
+.eyebrow{font-size:12px;letter-spacing:.35em;color:var(--mut);text-transform:uppercase;display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.eyebrow::after{content:"";width:90px;height:1px;background:var(--red)}
+h2{font-size:clamp(24px,3.4vw,40px);margin-bottom:14px}
+.lead{color:var(--mut);max-width:620px;margin-bottom:44px}
+.red{color:var(--red2)}
+/* hero */
+#home{max-width:none;min-height:100vh;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;gap:20px;padding-top:130px;position:relative}
+#home h1{font-size:clamp(46px,9vw,112px);letter-spacing:.14em;line-height:1;margin-bottom:22px}
+.tag{font-size:clamp(20px,2.4vw,30px);font-weight:300;margin-bottom:18px}
+.tag b{color:var(--red2);font-weight:500}
+.hero-p{color:var(--mut);max-width:440px;margin-bottom:32px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.hero-car{position:relative}
+.hero-car svg{width:100%;filter:drop-shadow(0 30px 40px rgba(227,25,55,.35));animation:float 7s ease-in-out infinite}
+.hero-car::after{content:"";position:absolute;left:8%;right:8%;bottom:6%;height:30px;background:radial-gradient(ellipse,rgba(227,25,55,.5),transparent 70%);filter:blur(10px)}
+@keyframes float{50%{transform:translateY(-10px)}}
+.intro{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;transition:.4s var(--ease);position:relative}
+.card:hover{border-color:rgba(227,25,55,.6);transform:translateY(-4px);box-shadow:0 10px 40px rgba(227,25,55,.12)}
+.card h3{font-size:12px;letter-spacing:.14em;margin-bottom:10px;display:flex;gap:10px;align-items:center}
+.card p{color:var(--mut);font-size:14px}
+.card .go{display:inline-block;margin-top:14px;font-size:13px;color:var(--red2)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red)}
+/* strategy */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.num{font-family:Michroma;color:var(--red);font-size:13px;margin-bottom:14px}
+.card h4{font-size:17px;font-weight:500;margin-bottom:8px}
+/* 4P */
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.tab{padding:10px 22px;border-radius:30px;border:1px solid var(--line);background:none;color:var(--mut);cursor:pointer;font:500 14px Inter;transition:.3s}
+.tab.on{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 0 20px rgba(227,25,55,.4)}
+.pane{display:none;animation:fade .5s var(--ease)}
+.pane.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.pane ul{list-style:none;display:grid;gap:12px;max-width:760px}
+.pane li{padding:16px 20px;border-left:2px solid var(--red);background:var(--panel);border-radius:0 12px 12px 0;color:#d6d6db}
+.pane li b{color:#fff}
+/* lineup */
+.stage{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px}
+.arrow{width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:none;color:#fff;font-size:20px;cursor:pointer;transition:.3s}
+.arrow:hover{border-color:var(--red);box-shadow:0 0 16px rgba(227,25,55,.5)}
+.showcase{display:grid;grid-template-columns:1.3fr 1fr;gap:30px;align-items:center;min-height:320px;padding:30px;border:1px solid rgba(227,25,55,.35);border-radius:22px;background:linear-gradient(145deg,rgba(227,25,55,.07),transparent)}
+.showcase #carArt>*{width:100%;transition:opacity .35s,transform .45s var(--ease)}
+.ph{border-radius:14px;overflow:hidden;aspect-ratio:3/2;background:#111;border:1px solid var(--line);display:flex;align-items:center}
+.credit{font-size:11px;color:var(--mut);margin-top:16px}.credit a{text-decoration:underline}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+
+.showcase .info{transition:opacity .35s,transform .45s var(--ease)}
+.swap{opacity:0;transform:translateX(24px)}
+.showcase h3{font-size:26px;margin-bottom:6px}
+.sub{color:var(--red2);font-size:13px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+.chip{font-size:12px;padding:6px 14px;border:1px solid var(--line);border-radius:20px;color:var(--mut)}
+.dots{display:flex;justify-content:center;gap:10px;margin-top:22px}
+.dots i{width:8px;height:8px;border-radius:50%;background:#444;cursor:pointer;transition:.3s}
+.dots i.on{background:var(--red);box-shadow:0 0 10px var(--red);width:22px;border-radius:6px}
+/* swot */
+.swot{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.swot .card{padding:28px}
+.swot h3{font-size:15px;margin-bottom:16px}
+.swot li{list-style:none;color:#cfcfd5;font-size:14.5px;padding:8px 0 8px 22px;position:relative;border-bottom:1px solid var(--line)}
+.swot li:last-child{border:0}
+.swot li::before{content:"";position:absolute;left:0;top:17px;width:8px;height:8px;border-radius:2px;background:var(--c,var(--red))}
+.S{--c:#3ddc97}.W{--c:#ff3b57}.O{--c:#4aa3ff}.T{--c:#ffb020}
+.swot .S h3{color:#3ddc97}.swot .W h3{color:#ff3b57}.swot .O h3{color:#4aa3ff}.swot .T h3{color:#ffb020}
+/* decision */
+.scenario{padding:30px;border:1px solid rgba(227,25,55,.4);border-radius:20px;background:linear-gradient(145deg,rgba(227,25,55,.08),transparent);margin-bottom:26px}
+.scenario .badge{font-size:11px;letter-spacing:.2em;color:var(--red2);margin-bottom:10px;display:block}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.opt{display:flex;flex-direction:column}
+.opt{text-align:left;cursor:pointer;color:#fff;font:inherit;position:relative;overflow:hidden}
+.opt .bar{position:absolute;inset:0 auto 0 0;width:0;background:rgba(227,25,55,.22);transition:width .9s var(--ease);z-index:0}
+.opt>*{position:relative;z-index:1}
+.opt h4{font-size:16px;margin-bottom:8px;font-weight:500;padding-right:50px}
+.opt h4 span{color:var(--red2);margin-right:8px;font-family:Michroma;font-size:13px}
+.opt .pct{position:absolute;right:20px;top:20px;font-family:Michroma;font-size:15px;opacity:0;transition:opacity .5s}
+.voted .opt .pct{opacity:1}
+.opt.mine{border-color:var(--red)}
+.vfoot{display:flex;justify-content:space-between;align-items:center;margin-top:18px;color:var(--mut);font-size:13px;flex-wrap:wrap;gap:10px}
+.vfoot label{cursor:pointer;display:flex;gap:8px;align-items:center}
+.vfoot button{background:none;border:0;color:var(--mut);cursor:pointer;text-decoration:underline;font:inherit}
+footer{text-align:center;color:var(--mut);font-size:13px;padding:50px 5vw 60px;border-top:1px solid var(--line)}
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:900px){
+.links{position:fixed;top:60px;left:0;right:0;flex-direction:column;background:rgba(9,9,11,.97);padding:20px 5vw;gap:16px;transform:translateY(-130%);transition:transform .4s var(--ease);border-bottom:1px solid var(--line)}
+.links.open{transform:none}.burger{display:block}nav .btn{display:none}
+#home{grid-template-columns:1fr;padding-top:110px}.intro,.grid3,.swot{grid-template-columns:1fr}.opts{grid-template-columns:1fr}
+.showcase{grid-template-columns:1fr}.stage{grid-template-columns:1fr}.arrow{display:none}
+section{padding:80px 5vw}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#home" class="logo">TESLA</a>
+  <div class="links" id="links">
+    <a href="#home" class="on">Overview</a><a href="#strategy">Marketing Strategy</a><a href="#fourps">4Ps</a><a href="#lineup">Lineup</a><a href="#swot">SWOT</a><a href="#decision">Decision</a>
+  </div>
+  <a href="#decision" class="btn" style="padding:9px 22px;border-color:var(--red)">Vote &rarr;</a>
+  <button class="burger" id="burger" aria-label="Menu">&#9776;</button>
+</nav>
+
+<section id="home">
+  <div class="rv in">
+    <div class="eyebrow">Marketing Case Study</div>
+    <h1>TESLA</h1>
+    <p class="tag">Innovation. Performance. A <b>Sustainable</b> Future.</p>
+    <p class="hero-p">Discover how Tesla's cutting-edge products, bold branding, and innovative marketing strategies have revolutionized the automotive industry.</p>
+    <div class="cta"><a href="#strategy" class="btn red">Explore the Strategy &rarr;</a><a href="#swot" class="btn">View Analysis</a></div>
+  </div>
+  <div class="hero-car rv in" style="--d:.2s" id="heroCar"></div>
+  <div class="intro">
+    <a href="#strategy" class="card rv" style="--d:.1s"><h3><span class="dot"></span>MARKETING STRATEGY</h3><p>A brand built on innovation and vision, not traditional advertising.</p><span class="go">Learn more &rarr;</span></a>
+    <a href="#lineup" class="card rv" style="--d:.2s"><h3><span class="dot"></span>EXPLORE THE LINEUP</h3><p>Browse five models, from the Model 3 to the Cybertruck.</p><span class="go">Browse cars &rarr;</span></a>
+    <a href="#swot" class="card rv" style="--d:.3s"><h3><span class="dot"></span>SWOT ANALYSIS</h3><p>Strengths, weaknesses, opportunities and threats.</p><span class="go">View details &rarr;</span></a>
+    <a href="#decision" class="card rv" style="--d:.4s"><h3><span class="dot"></span>CLASS DECISION</h3><p>A hypothetical crisis. What would you do as Tesla's CMO?</p><span class="go">Cast your vote &rarr;</span></a>
+  </div>
+</section>
+
+<section id="strategy">
+  <div class="eyebrow rv">Marketing Strategy</div>
+  <h2 class="rv">A brand that <span class="red">sells itself</span></h2>
+  <p class="lead rv">Tesla has historically spent very little on traditional advertising. Instead it leans on the product, the story and the community.</p>
+  <div class="grid3">
+    <div class="card rv"><div class="num">01</div><h4>Word of mouth &amp; referrals</h4><p>Owners become the sales force. Referral programs and enthusiastic communities turn customers into advocates.</p></div>
+    <div class="card rv" style="--d:.1s"><div class="num">02</div><h4>Founder-led storytelling</h4><p>Elon Musk's social media presence generates huge free media coverage around every launch and announcement.</p></div>
+    <div class="card rv" style="--d:.2s"><div class="num">03</div><h4>Direct-to-consumer sales</h4><p>Online ordering and company-owned showrooms give Tesla control over price, experience and customer data.</p></div>
+    <div class="card rv"><div class="num">04</div><h4>Mission-driven positioning</h4><p>"Accelerate the world's transition to sustainable energy" gives the brand a purpose beyond the product.</p></div>
+    <div class="card rv" style="--d:.1s"><div class="num">05</div><h4>Software &amp; updates</h4><p>Over-the-air updates keep cars improving after purchase, reinforcing the "tech company" image.</p></div>
+    <div class="card rv" style="--d:.2s"><div class="num">06</div><h4>Ecosystem &amp; Supercharging</h4><p>Charging network, energy products and the app create lock-in and remove range anxiety.</p></div>
+  </div>
+</section>
+
+<section id="fourps">
+  <div class="eyebrow rv">The Marketing Mix</div>
+  <h2 class="rv">The <span class="red">4Ps</span> of Tesla</h2>
+  <div class="tabs rv" id="tabs">
+    <button class="tab on" data-p="0">Product</button><button class="tab" data-p="1">Price</button><button class="tab" data-p="2">Place</button><button class="tab" data-p="3">Promotion</button>
+  </div>
+  <div class="rv">
+    <div class="pane on"><ul><li><b>Electric-first lineup:</b> sedans, SUVs and a pickup, all fully electric.</li><li><b>Technology as the selling point:</b> large touchscreen, Autopilot features, over-the-air updates.</li><li><b>Beyond cars:</b> solar, home batteries and the Supercharger network.</li></ul></div>
+    <div class="pane"><ul><li><b>Premium positioning:</b> priced above most mainstream EVs, with a focus on value through performance and low running costs.</li><li><b>Flexible pricing:</b> prices are adjusted directly and quickly, without dealer negotiation.</li><li><b>Accessible entry point:</b> Model 3 and Model Y aim at the mass market.</li></ul></div>
+    <div class="pane"><ul><li><b>Direct sales:</b> no traditional dealerships; orders are placed online or in Tesla stores.</li><li><b>Prime retail locations:</b> showrooms in malls and busy streets work as brand experiences.</li><li><b>Global delivery and service:</b> Gigafactories and mobile service reduce friction.</li></ul></div>
+    <div class="pane"><ul><li><b>Minimal paid advertising:</b> the brand relies on earned media and organic buzz.</li><li><b>Social media:</b> founder posts, fan communities and launch events draw global attention.</li><li><b>Referral rewards:</b> customers are encouraged to bring in new buyers.</li></ul></div>
+  </div>
+</section>
+
+<section id="lineup">
+  <div class="eyebrow rv">The Lineup</div>
+  <h2 class="rv">Browse the <span class="red">cars</span></h2>
+  <p class="lead rv">Use the arrows, the dots, or your keyboard's left and right keys.</p>
+  <div class="stage rv">
+    <button class="arrow" id="prev" aria-label="Previous">&larr;</button>
+    <div class="showcase"><div id="carArt"></div><div class="info" id="carInfo"></div></div>
+    <button class="arrow" id="next" aria-label="Next">&rarr;</button>
+  </div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<section id="swot">
+  <div class="eyebrow rv">SWOT Analysis</div>
+  <h2 class="rv">Where Tesla <span class="red">stands</span></h2>
+  <div class="swot">
+    <div class="card S rv"><h3>STRENGTHS</h3><ul><li>Powerful, recognizable global brand</li><li>Technology and software leadership</li><li>Supercharger network</li><li>Vertical integration and large-scale manufacturing</li><li>Loyal customer community</li></ul></div>
+    <div class="card W rv" style="--d:.1s"><h3>WEAKNESSES</h3><ul><li>Premium pricing limits the mass market</li><li>Brand heavily tied to one public figure</li><li>Reported build-quality and service complaints</li><li>Small model range compared with rivals</li><li>Few physical service centres in some regions</li></ul></div>
+    <div class="card O rv"><h3>OPPORTUNITIES</h3><ul><li>Growing worldwide EV demand</li><li>Energy storage and solar business</li><li>Emerging markets and new factories</li><li>Autonomy and software subscriptions</li><li>Lower-priced future models</li></ul></div>
+    <div class="card T rv" style="--d:.1s"><h3>THREATS</h3><ul><li>Rising competition, including fast-growing Chinese EV makers</li><li>Regulatory scrutiny of driver-assistance features</li><li>Changing government EV incentives</li><li>Supply chain and battery material costs</li><li>Brand perception shifts and public controversy</li></ul></div>
+  </div>
+</section>
+
+<section id="decision">
+  <div class="eyebrow rv">Audience Decision</div>
+  <h2 class="rv">You are the <span class="red">CMO</span></h2>
+  <div class="scenario rv">
+    <span class="badge">HYPOTHETICAL SCENARIO</span>
+    <p>A video of a Tesla driver-assistance malfunction goes viral and is shared millions of times. Regulators open an inquiry, the media pile on, and online orders slow down in key markets. Tesla has to respond within the week. <b>What is the best marketing response?</b></p>
+  </div>
+  <div class="opts rv" id="opts"></div>
+  <div class="vfoot rv">
+    <span id="status">Choose one option to vote.</span>
+    <span><label><input type="checkbox" id="pm"> Presenter mode (count hand-raise votes)</label> <button id="reset">Reset votes</button></span>
+  </div>
+</section>
+
+<footer>Tesla Marketing Case Study &middot; Student presentation &middot; Educational use only. Tesla is a trademark of Tesla, Inc.; this project is not affiliated with Tesla.</footer>
+
+<script>
+/* ---- car artwork (stylised SVG) ---- */
+const wheel=(x)=>`<g><circle cx="${x}" cy="128" r="23" fill="#0b0b0d" stroke="#2a2a2e" stroke-width="3"/><circle cx="${x}" cy="128" r="11" fill="none" stroke="#e31937" stroke-width="1.5" opacity=".8"/></g>`;
+const body=(d,win)=>`<svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b2b30"/><stop offset="1" stop-color="#0b0b0d"/></linearGradient></defs><ellipse cx="220" cy="154" rx="190" ry="8" fill="#e31937" opacity=".25"/><path d="${d}" fill="url(#g)" stroke="#e31937" stroke-width="1.2"/><path d="${win}" fill="#15151a" stroke="rgba(255,255,255,.25)" stroke-width="1"/>${wheel(105)}${wheel(335)}</svg>`;
+const ART={
+ s:body("M20 125 Q22 100 70 94 L140 68 Q215 44 290 66 L370 92 Q420 98 424 124 L400 138 L350 138 A23 23 0 0 0 304 138 L136 138 A23 23 0 0 0 90 138 L40 138Z","M150 72 Q215 52 282 70 L340 92 L142 92Z"),
+ 3:body("M22 125 Q26 102 74 96 L146 66 Q214 48 280 68 L366 94 Q416 100 422 124 L400 138 L350 138 A23 23 0 0 0 304 138 L136 138 A23 23 0 0 0 90 138 L40 138Z","M154 72 Q214 56 274 72 L330 94 L148 94Z"),
+ x:body("M20 125 Q22 96 66 88 L120 56 Q215 36 306 58 L378 88 Q424 96 424 124 L400 138 L350 138 A23 23 0 0 0 304 138 L136 138 A23 23 0 0 0 90 138 L40 138Z","M128 62 Q215 44 300 64 L352 90 L124 90Z"),
+ y:body("M22 125 Q24 98 70 90 L132 60 Q212 42 292 62 L372 90 Q420 98 422 124 L400 138 L350 138 A23 23 0 0 0 304 138 L136 138 A23 23 0 0 0 90 138 L40 138Z","M140 66 Q212 50 286 68 L338 90 L136 90Z"),
+ c:body("M18 126 L26 100 L150 64 L426 106 L428 126 L400 138 L350 138 A23 23 0 0 0 304 138 L136 138 A23 23 0 0 0 90 138 L40 138Z","M156 70 L330 100 L150 100Z")
+};
+document.getElementById('heroCar').innerHTML=ART.s;
+
+/* ---- reveal on scroll ---- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ---- nav ---- */
+const links=document.getElementById('links');
+document.getElementById('burger').onclick=()=>links.classList.toggle('open');
+links.querySelectorAll('a').forEach(a=>a.onclick=()=>links.classList.remove('open'));
+const secs=[...links.querySelectorAll('a')].map(a=>[a,document.querySelector(a.getAttribute('href'))]);
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)secs.forEach(([a,s])=>a.classList.toggle('on',s===e.target))}),{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(([a,s])=>spy.observe(s));
+
+/* ---- 4P tabs ---- */
+const tabs=[...document.querySelectorAll('.tab')],panes=[...document.querySelectorAll('.pane')];
+tabs.forEach((t,i)=>t.onclick=()=>{tabs.forEach((x,j)=>x.classList.toggle('on',i===j));panes.forEach((p,j)=>p.classList.toggle('on',i===j))});
+
+/* ---- car browser ---- */
+const CARS=[
+ {k:'s',n:'Model S',s:'Flagship performance sedan',d:'The car that proved electric vehicles could be fast, long-range and desirable. It sits at the top of the range as the luxury and technology showcase.',c:['Sedan','Luxury','Flagship']},
+ {k:'3',n:'Model 3',s:'Mass-market sedan',d:'Designed to bring Tesla to a much wider audience. It is the entry point of the lineup and a key driver of volume sales.',c:['Sedan','Entry level','Volume']},
+ {k:'x',n:'Model X',s:'Family SUV',d:'A large electric SUV known for its distinctive falcon-wing doors. It targets families and buyers who want space plus technology.',c:['SUV','Falcon-wing doors','Family']},
+ {k:'y',n:'Model Y',s:'Compact crossover',d:'A practical crossover built on the same ideas as Model 3. It has been one of the brand\'s most important models worldwide.',c:['Crossover','Practical','Best seller']},
+ {k:'c',n:'Cybertruck',s:'Stainless-steel pickup',d:'A bold, angular pickup that breaks every design rule. It is as much a marketing statement as a vehicle.',c:['Pickup','Stainless steel','Bold design']}
+];
+const FILES={s:'2018 Tesla Model S 75D.jpg',3:'Candy Red Tesla Model 3 trimmed.jpg',x:'Tesla Model X 100D 1X7A6736.jpg',y:'2020 Tesla Model Y (United States) front view NHTSA.jpg',c:'2024 Tesla Cybertruck Foundation Series, front left (Greenwich).jpg'};
+const HASH={s:'1/14',3:'7/73',x:'c/c6',y:'d/df',c:'9/95'};
+const q=f=>encodeURIComponent(f.replace(/ /g,'_'));
+const imgUrls=k=>{const f=FILES[k].replace(/ /g,'_');return['https://upload.wikimedia.org/wikipedia/commons/thumb/'+HASH[k]+'/'+q(f)+'/960px-'+q(f),'https://commons.wikimedia.org/wiki/Special:FilePath/'+q(f)+'?width=960']};
+const pageUrl=k=>'https://commons.wikimedia.org/wiki/File:'+q(FILES[k]);
+CARS.forEach(c=>{new Image().src=imgUrls(c.k)[0]});
+let cur=0,busy=false;
+const art=document.getElementById('carArt'),info=document.getElementById('carInfo'),dots=document.getElementById('dots');
+CARS.forEach((_,i)=>{const d=document.createElement('i');d.onclick=()=>show(i);dots.appendChild(d)});
+function fill(i){const c=CARS[i];art.innerHTML='<div class="ph"><img alt="Tesla '+c.n+'" referrerpolicy="no-referrer"></div>';const im=art.querySelector('img');const u=imgUrls(c.k);let t=0;im.onerror=()=>{t++;if(t<u.length)im.src=u[t];else art.innerHTML=ART[c.k]};im.src=u[0];info.innerHTML=`<div class="sub">${c.s}</div><h3>${c.n}</h3><p style="color:var(--mut);margin-top:10px">${c.d}</p><div class="chips">${c.c.map(x=>`<span class="chip">${x}</span>`).join('')}</div><div class="credit">Photo: <a href="${pageUrl(c.k)}" target="_blank" rel="noopener">Wikimedia Commons</a></div>`;[...dots.children].forEach((d,j)=>d.classList.toggle('on',j===i))}
+function show(i){if(busy||i===cur)return;busy=true;const n=(i+CARS.length)%CARS.length;art.firstChild.classList.add('swap');info.classList.add('swap');
+ setTimeout(()=>{cur=n;fill(n);const s=art.firstChild;s.classList.add('swap');requestAnimationFrame(()=>requestAnimationFrame(()=>{s.classList.remove('swap');info.classList.remove('swap');busy=false}))},320)}
+const go=d=>show((cur+d+CARS.length)%CARS.length);
+document.getElementById('prev').onclick=()=>go(-1);document.getElementById('next').onclick=()=>go(1);
+addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(-1);if(e.key==='ArrowRight')go(1)});
+fill(0);
+
+/* ---- class vote (saved in this browser only) ---- */
+const OPTS=[
+ ['A','Radical transparency','Publish the full investigation, apologise publicly, and push a free software fix to every car.'],
+ ['B','Price and incentive push','Keep the message on the product: cut prices, add free charging and extend warranties to win back buyers.'],
+ ['C','Change the narrative','Launch a sustainability and innovation campaign, using owner stories and ambassadors to shift focus.']
+];
+const KEY='tesla_vote_v2';
+let st;try{st=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+st=st||{c:[0,0,0],mine:null};
+const box=document.getElementById('opts'),pm=document.getElementById('pm'),stat=document.getElementById('status');
+box.innerHTML=OPTS.map((o,i)=>`<button class="card opt" data-i="${i}"><div class="bar"></div><span class="pct">0%</span><h4><span>${o[0]}</span>${o[1]}</h4><p style="color:var(--mut);font-size:14px;padding-right:44px">${o[2]}</p></button>`).join('');
+const btns=[...box.children];
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+function render(){const t=st.c.reduce((a,b)=>a+b,0),show=st.mine!==null||t>0;
+ box.classList.toggle('voted',show);
+ btns.forEach((b,i)=>{const p=t?Math.round(st.c[i]/t*100):0;b.querySelector('.pct').textContent=p+'%';b.querySelector('.bar').style.width=show?p+'%':'0';b.classList.toggle('mine',st.mine===i)});
+ stat.textContent=t?`${t} vote${t>1?'s':''} counted`+(st.mine!==null?' · You voted':''):'Choose one option to vote.'}
+btns.forEach((b,i)=>b.onclick=()=>{if(st.mine!==null&&!pm.checked)return;st.c[i]++;if(!pm.checked)st.mine=i;save();render()});
+document.getElementById('reset').onclick=()=>{st={c:[0,0,0],mine:null};save();render()};
+render();
+</script>
+</body>
+</html>
