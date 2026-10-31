@@ -1,142 +1,17 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#08090b">
-<title>Tesla | Marketing Intelligence</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08090b"><title>Tesla Marketing Lab</title>
 <style>
-:root{--bg:#08090b;--panel:rgba(10,12,15,.83);--line:rgba(255,255,255,.14);--muted:#8e929a;--red:#e82127;--white:#f4f5f7;--blue:#397dff}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% 35%,#24272c 0,#101215 38%,#070809 78%);color:var(--white);font-family:Inter,Arial,sans-serif;min-height:100vh}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 90%)}
-.shell{width:min(1500px,94vw);margin:4vh auto;padding:18px;border:1px solid #34373b;border-radius:22px;background:rgba(3,4,5,.68);box-shadow:0 25px 100px #000b;position:relative;overflow:hidden}
-.topbar{height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 12px 12px;border-bottom:1px solid var(--line);gap:20px}
-.brand{font-weight:700;letter-spacing:.03em;font-size:15px}.brand b{color:var(--red);font-size:19px;margin-right:8px}
-nav{display:flex;gap:30px;align-items:center}nav a,.user{font:10px ui-monospace,monospace;letter-spacing:.12em;color:#a7aab0;text-decoration:none}nav a:hover,nav a.active{color:white}
-.user{color:#eee;white-space:nowrap}
-.dashboard{display:grid;grid-template-columns:minmax(190px,1fr) minmax(320px,2.1fr) minmax(205px,1fr);grid-template-rows:auto auto;gap:14px;padding:18px 0 4px}
-.intro{grid-column:1;grid-row:1;z-index:2;padding:12px 8px}.eyebrow{font:10px ui-monospace,monospace;letter-spacing:.2em;color:#a5a8ae;text-transform:uppercase}.intro h1{font-size:clamp(42px,5vw,76px);line-height:.95;letter-spacing:-.07em;margin:15px 0 22px}.intro h1 span{color:var(--red)}.intro p{color:#a7abb2;line-height:1.6;font-size:13px;max-width:310px}
-.hero{grid-column:2;grid-row:1;min-height:410px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero:before{content:"";position:absolute;width:80%;height:80%;border-radius:50%;background:radial-gradient(ellipse,#555b642b,transparent 67%);filter:blur(12px)}
-.orbit{position:absolute;width:95%;height:54%;border:1px solid #ffffff12;border-radius:50%;transform:rotate(-8deg);bottom:12%;box-shadow:0 0 40px #e8212710}
-.redline{position:absolute;height:2px;width:120%;background:linear-gradient(90deg,transparent,var(--red),#ff6b6b,transparent);top:57%;transform:rotate(-2deg);box-shadow:0 0 15px #e82127}
-.vehicle{position:relative;width:min(95%,580px);height:220px;filter:drop-shadow(0 28px 20px #000);margin-top:75px}
-.truck{position:absolute;left:7%;right:4%;bottom:22px;height:112px;background:linear-gradient(160deg,#777e88 0,#262a30 18%,#080a0d 52%,#181c22 100%);clip-path:polygon(0 35%,42% 35%,58% 0,76% 3%,100% 38%,100% 90%,0 90%);border:1px solid #aab1ba}
-.truck:before{content:"";position:absolute;left:43%;top:7%;width:35%;height:38%;background:linear-gradient(135deg,#151b23,#050608);clip-path:polygon(0 100%,40% 0,100% 0,100% 100%);border:1px solid #9ca5b1}
-.truck:after{content:"";position:absolute;left:2%;right:2%;top:37%;height:5px;background:#f3f7ff;box-shadow:0 0 12px 3px #d9e5ff}
-.wheel{position:absolute;bottom:0;width:75px;height:75px;border-radius:50%;background:radial-gradient(circle,#333 0 19%,#0a0b0d 21% 35%,#707780 37% 41%,#08090b 43% 62%,#454a50 64% 67%,#08090b 69%);border:3px solid #181b20;z-index:2}.wheel.one{left:20%}.wheel.two{right:19%}
-.hero-caption{position:absolute;bottom:2px;left:0;right:0;text-align:center;color:#aeb2b9;font:9px ui-monospace,monospace;letter-spacing:.2em}
-.stats{grid-column:2;grid-row:2;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;padding:0 8px 12px}
-.stat{border-top:1px solid var(--line);padding:13px 5px}.stat strong{display:block;font-size:25px;font-weight:500}.stat small{font:9px ui-monospace,monospace;color:var(--muted);letter-spacing:.12em}
-.left-stack{grid-column:1;grid-row:2;display:grid;gap:12px;align-content:start}.right-stack{grid-column:3;grid-row:1 / span 2;display:grid;gap:12px;align-content:start}
-.card{border:1px solid var(--line);border-radius:12px;background:linear-gradient(145deg,#101317eF,#080a0cE8);padding:15px;box-shadow:inset 0 1px #ffffff08}
-.card h3{font:10px ui-monospace,monospace;letter-spacing:.14em;font-weight:500;margin:0 0 13px;color:#e6e8eb}.muted{color:var(--muted);font-size:11px;line-height:1.55}
-.insight-number{font-size:30px;margin:8px 0 2px}.red{color:var(--red)}.bar{height:8px;background:#272b31;border-radius:20px;overflow:hidden;margin:9px 0}.bar i{display:block;height:100%;background:linear-gradient(90deg,#a80f18,#f33b43);border-radius:20px}
-.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:14px}.metrics div{background:#ffffff08;border-radius:8px;padding:9px 4px;text-align:center}.metrics b{display:block;font-size:18px;font-weight:500}.metrics small{font:8px ui-monospace,monospace;color:var(--muted)}
-.model{display:grid;grid-template-columns:55px 1fr 34px;align-items:center;gap:8px;margin:10px 0;font-size:10px;color:#c7c9ce}.model .bar{margin:0;height:6px}.model em{font-style:normal;text-align:right;color:var(--muted);font-size:9px}
-.chart{height:105px;display:flex;align-items:end;gap:7px;padding:10px 2px 0;border-bottom:1px solid #ffffff22;background:repeating-linear-gradient(to bottom,transparent 0 25px,#ffffff0b 26px)}
-.chart i{flex:1;border-radius:3px 3px 0 0;background:linear-gradient(to top,#9f111a,#f0444b);min-width:5px}
-.pill{display:inline-block;padding:5px 8px;border:1px solid #ffffff24;border-radius:20px;font:9px ui-monospace,monospace;color:#c4c7cc}
-.cta{display:block;text-align:center;text-decoration:none;color:white;background:linear-gradient(110deg,#184dba,#397dff);border:1px solid #6c9cff;border-radius:8px;padding:12px;font:10px ui-monospace,monospace;letter-spacing:.1em;margin-top:14px;box-shadow:0 5px 20px #1758d555}
-.cta:hover{filter:brightness(1.15)}
-.footer{display:flex;justify-content:space-between;gap:12px;color:#777d85;font:9px ui-monospace,monospace;letter-spacing:.1em;padding:16px 10px 2px;border-top:1px solid var(--line);margin-top:14px}
-section.detail{width:min(1100px,94vw);margin:50px auto;padding:30px;border:1px solid var(--line);border-radius:18px;background:#0a0c0fee}
-.detail h2{font-size:clamp(28px,4vw,48px);margin:8px 0 15px;letter-spacing:-.04em}.detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.detail .card{min-height:130px}
-.decision button{background:#14181e;color:#eee;border:1px solid #343b45;border-radius:8px;padding:12px;text-align:left;width:100%;margin:5px 0;cursor:pointer}.decision button:hover,.decision button.selected{border-color:var(--red);background:#251114}.result{display:none;border-left:3px solid var(--red);padding:12px;margin-top:12px;background:#ffffff08;color:#d8dbe0;font-size:13px;line-height:1.6}
-@media(max-width:900px){.dashboard{grid-template-columns:1fr 1.5fr;grid-template-rows:auto auto auto}.intro{grid-column:1;grid-row:1}.hero{grid-column:2;grid-row:1}.stats{grid-column:2;grid-row:2}.left-stack{grid-column:1;grid-row:2 / span 2}.right-stack{grid-column:1 / -1;grid-row:3;grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){.shell{width:96vw;margin:2vh auto;padding:12px;border-radius:14px}.topbar{height:auto;flex-wrap:wrap}.topbar nav{order:3;width:100%;justify-content:space-between;gap:8px}.topbar nav a{font-size:8px}.dashboard{display:flex;flex-direction:column}.intro{padding:8px 4px}.intro h1{font-size:54px}.hero{min-height:290px}.vehicle{transform:scale(.85);margin-top:30px}.stats{order:3}.left-stack{order:4}.right-stack{display:grid;grid-template-columns:1fr}.detail{padding:20px!important}.detail-grid{grid-template-columns:1fr}.footer{flex-direction:column}}
-</style>
-</head>
-<body>
-<main class="shell" id="top">
-<header class="topbar">
-  <div class="brand"><b>◢</b> TESLA / INSIGHT</div>
-  <nav><a class="active" href="#overview">OVERVIEW</a><a href="#strategy">STRATEGY</a><a href="#swot">SWOT</a><a href="#decision">DECISION LAB</a></nav>
-  <div class="user">MARKETING CASE STUDY&nbsp; ↗</div>
-</header>
-<div class="dashboard" id="overview">
-  <div class="intro">
-    <div class="eyebrow">Strategic marketing analysis / 2026</div>
-    <h1>TESLA<span>.</span><br>IN FOCUS</h1>
-    <p>An interactive look at how Tesla builds its identity, positions its products, and competes in the electric vehicle market.</p>
-    <span class="pill">CASE STUDY 01 / DIGITAL EXPERIENCE</span>
-  </div>
-  <div class="hero">
-    <div class="orbit"></div><div class="redline"></div>
-    <div class="vehicle"><div class="truck"></div><div class="wheel one"></div><div class="wheel two"></div></div>
-    <div class="hero-caption">DESIGN&nbsp; / &nbsp;TECHNOLOGY&nbsp; / &nbsp;ELECTRIC MOBILITY</div>
-  </div>
-  <div class="stats">
-    <div class="stat"><strong>01</strong><small>BRAND POSITION</small></div>
-    <div class="stat"><strong>04</strong><small>MARKETING MIX</small></div>
-    <div class="stat"><strong>SWOT</strong><small>STRATEGIC REVIEW</small></div>
-  </div>
-  <aside class="left-stack">
-    <div class="card"><h3>MARKETING PILLARS</h3><div class="muted">A framework for examining Tesla's public-facing strategy.</div>
-      <div class="chart"><i style="height:45%"></i><i style="height:57%"></i><i style="height:49%"></i><i style="height:67%"></i><i style="height:61%"></i><i style="height:78%"></i><i style="height:72%"></i><i style="height:91%"></i><i style="height:84%"></i></div>
-      <div style="display:flex;justify-content:space-between;margin-top:9px"><span class="muted">Illustrative framework</span><span class="red" style="font-size:10px">●</span></div>
-    </div>
-    <div class="card"><h3>CASE STUDY BREAKDOWN</h3><div class="metrics"><div><b>4</b><small>Ps</small></div><div><b>3</b><small>CORE THEMES</small></div><div><b>1</b><small>CASE</small></div></div></div>
-  </aside>
-  <aside class="right-stack">
-    <div class="card"><h3>MARKETING INSIGHT</h3><p class="muted">A strong brand can create recognition and perceived value. It also creates expectations that the customer experience must consistently meet.</p><div class="bar"><i style="width:78%"></i></div><div style="display:flex;justify-content:space-between"><span class="muted">Brand promise</span><span class="muted">Customer experience</span></div><a class="cta" href="#strategy">EXPLORE THE STRATEGY&nbsp; »</a></div>
-    <div class="card"><h3>STRATEGY AREAS</h3>
-      <div class="model"><span>Product</span><div class="bar"><i style="width:92%"></i></div><em>01</em></div>
-      <div class="model"><span>Price</span><div class="bar"><i style="width:74%"></i></div><em>02</em></div>
-      <div class="model"><span>Place</span><div class="bar"><i style="width:82%"></i></div><em>03</em></div>
-      <div class="model"><span>Promotion</span><div class="bar"><i style="width:88%"></i></div><em>04</em></div>
-      <p class="muted">Visual indicators are illustrative, not measured Tesla performance data.</p>
-    </div>
-    <div class="card"><h3>HOW TO USE THIS SITE</h3><p class="muted">Browse the analysis, review the SWOT framework, then make a choice in the decision lab.</p><a class="cta" href="#decision">OPEN DECISION LAB&nbsp; »</a></div>
-  </aside>
-</div>
-<div class="footer"><span>TESLA MARKETING LAB / STUDENT CASE STUDY</span><span>INDEPENDENT ACADEMIC PROJECT · NOT AFFILIATED WITH TESLA, INC.</span></div>
-</main>
-
-<section class="detail" id="strategy">
-  <div class="eyebrow">01 / Strategic framework</div><h2>How Tesla competes</h2>
-  <p class="muted">Use these marketing concepts to interpret the company's approach. This is an educational analysis, not an official statement from Tesla.</p>
-  <div class="detail-grid">
-    <article class="card"><h3>PRODUCT</h3><p class="muted">Electric vehicles, software-enabled features, charging access, and an ecosystem of related services.</p></article>
-    <article class="card"><h3>PRICE</h3><p class="muted">Examine how pricing, product versions, incentives, and perceived value shape customer decisions.</p></article>
-    <article class="card"><h3>PLACE</h3><p class="muted">Consider direct sales channels, online purchasing, showrooms, delivery, and charging infrastructure.</p></article>
-    <article class="card"><h3>PROMOTION</h3><p class="muted">Analyze earned media, social platforms, product announcements, referrals, and public brand visibility.</p></article>
-    <article class="card"><h3>POSITIONING</h3><p class="muted">Explore the association of Tesla with electric mobility, technology, innovation, and performance.</p></article>
-    <article class="card"><h3>PERSONAL BRANDING</h3><p class="muted">Elon Musk's public profile can increase attention while also creating reputation risks for Tesla.</p></article>
-  </div>
-</section>
-<section class="detail" id="swot">
-  <div class="eyebrow">02 / Strategic review</div><h2>SWOT analysis</h2>
-  <div class="detail-grid">
-    <article class="card"><h3 class="red">STRENGTHS</h3><p class="muted">Recognizable brand; experience in electric vehicles; software and charging ecosystem.</p></article>
-    <article class="card"><h3>WEAKNESSES</h3><p class="muted">Brand reputation exposure; dependence on a focused product portfolio; customer experience challenges to monitor.</p></article>
-    <article class="card"><h3>OPPORTUNITIES</h3><p class="muted">EV adoption; energy storage; software and services; expansion into new customer segments.</p></article>
-    <article class="card"><h3>THREATS</h3><p class="muted">Growing EV competition; changing regulations; price pressure; reputational controversy.</p></article>
-  </div>
-  <p class="muted" style="margin-top:14px">These are discussion points for a classroom case study. Validate and refine them with current evidence before presenting them as factual findings.</p>
-</section>
-<section class="detail decision" id="decision">
-  <div class="eyebrow">03 / Audience interaction</div><h2>Make the marketing call.</h2>
-  <p class="muted">Hypothetical scenario: competitors are increasing pressure in the EV market. Which direction should Tesla's marketing team prioritize?</p>
-  <button data-answer="brand">A — Strengthen brand differentiation</button>
-  <button data-answer="price">B — Compete more aggressively on price</button>
-  <button data-answer="digital">C — Invest further in digital customer experience</button>
-  <button data-answer="loyalty">D — Focus on customer loyalty and advocacy</button>
-  <div class="result" id="result"></div>
-</section>
+:root{--red:#ed1c24;--muted:#a1a5ad;--line:#ffffff20}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% 22%,#351014,transparent 38%),#08090b;color:#f5f6f7;font-family:Inter,Arial,sans-serif;overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.1;background-image:linear-gradient(#fff1 1px,transparent 1px),linear-gradient(90deg,#fff1 1px,transparent 1px);background-size:54px 54px}.nav{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;border-bottom:1px solid var(--line);position:sticky;top:0;background:#08090be8;backdrop-filter:blur(18px);z-index:10}.logo{font-weight:800;letter-spacing:.3em}.logo b{color:var(--red);font-size:23px;margin-right:10px}.navlinks{display:flex;gap:26px}.nav a{color:#b8bbc1;text-decoration:none;font-size:12px;transition:.25s}.nav a:hover{color:white}.pill,.btn{display:inline-block;padding:12px 19px;border-radius:30px;border:1px solid #b51b24;background:linear-gradient(110deg,#ed1c24,#991119);color:white!important;box-shadow:0 0 22px #ed1c2430}.hero{min-height:590px;max-width:1450px;margin:auto;padding:65px 5vw 30px;display:grid;grid-template-columns:.85fr 1.15fr;align-items:center;position:relative}.hero:after{content:"";position:absolute;bottom:0;left:5%;right:5%;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent)}.eyebrow{font:11px ui-monospace,monospace;letter-spacing:.2em;text-transform:uppercase;color:#b6bac1}.eyebrow:before{content:"";display:inline-block;width:27px;height:2px;background:var(--red);margin:0 10px 3px 0}.hero h1{font-size:clamp(55px,7.5vw,100px);line-height:.9;letter-spacing:-.07em;margin:25px 0}.hero h1 span{color:var(--red)}.tagline{font-size:clamp(18px,2vw,25px)}.copy p{max-width:450px;color:var(--muted);font-size:14px;line-height:1.8;margin:22px 0 30px}.ghost{margin-left:12px;padding:12px 18px;border:1px solid var(--line);border-radius:30px;color:#ddd;text-decoration:none;font-size:12px;display:inline-block}.car{position:relative;animation:arrive 1s ease both}.car:before{content:"";position:absolute;inset:18% 5% 8%;background:#ed1c2433;filter:blur(60px);border-radius:50%;z-index:-1}.car img{width:100%;display:block;mix-blend-mode:screen;filter:drop-shadow(0 25px 25px #000);animation:float 6s ease-in-out infinite}.car small{display:block;text-align:right;font:10px ui-monospace,monospace;letter-spacing:.17em;color:#aaa}.cards{max-width:1450px;margin:auto;padding:25px 5vw 50px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card,.tile{background:linear-gradient(145deg,#17191edd,#0a0b0de8);border:1px solid var(--line);border-radius:15px;padding:22px;transition:transform .35s,border-color .35s;min-width:0}.card:hover,.tile:hover{transform:translateY(-7px);border-color:#ed1c2477}.card h3{font:11px ui-monospace,monospace;letter-spacing:.14em;margin:0 0 16px}.icon{color:var(--red);font-size:21px;margin-right:9px}.muted{color:var(--muted);font-size:13px;line-height:1.65}.quad{display:grid;grid-template-columns:1fr 1fr;gap:9px}.quad div{background:#ffffff08;border:1px solid #ffffff10;border-radius:9px;padding:12px}.quad b{display:block;font-size:12px;margin-bottom:5px}.quad span{font-size:11px;color:var(--muted)}.section{max-width:1200px;margin:55px auto;padding:30px 5vw;border-top:1px solid var(--line)}.section h2,.poll h2{font-size:clamp(30px,4vw,48px);letter-spacing:-.05em;margin:12px 0}.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.tile h3{font-size:14px}.tile p{font-size:12px;line-height:1.6;color:var(--muted)}.poll{max-width:1200px;margin:50px auto 80px;padding:25px 5vw}.pollbox{border:1px solid #ed1c2455;border-radius:18px;background:linear-gradient(130deg,#1a1013,#0c0e12);padding:clamp(22px,4vw,40px);display:grid;grid-template-columns:1.1fr .9fr;gap:30px}.choices{display:grid;gap:9px;margin-top:20px}.choice{padding:14px;text-align:left;color:white;background:#ffffff09;border:1px solid var(--line);border-radius:9px;cursor:pointer;transition:.2s}.choice:hover:not(:disabled){border-color:var(--red);transform:translateX(4px)}.choice:disabled{opacity:.8;cursor:default}.choice.selected{border-color:var(--red);background:#ed1c2418}.note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px}.results{align-self:center}.row{margin:18px 0}.rowtop{display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px}.track{height:10px;border-radius:20px;background:#34363d;overflow:hidden}.fill{height:100%;width:0;background:linear-gradient(90deg,#a10f18,#f3313a);transition:width 1s ease}.foot{border-top:1px solid var(--line);padding:22px 5vw;color:#777d85;font:10px ui-monospace,monospace;letter-spacing:.1em;display:flex;justify-content:space-between;gap:10px}.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}.reveal.show{opacity:1;transform:none}@keyframes float{50%{transform:translateY(-10px)}}@keyframes arrive{from{opacity:0;transform:translateX(35px)}to{opacity:1;transform:none}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}@media(max-width:850px){.hero{grid-template-columns:1fr}.car{max-width:700px;margin:auto}.cards{grid-template-columns:1fr 1fr}.cards .card:last-child{grid-column:1/-1}.tiles{grid-template-columns:1fr 1fr}.pollbox{grid-template-columns:1fr}}@media(max-width:600px){.nav{padding:0 4vw}.navlinks{display:none}.hero{padding:50px 6vw 20px}.hero h1{font-size:60px}.cards{grid-template-columns:1fr}.cards .card:last-child{grid-column:auto}.tiles{grid-template-columns:1fr 1fr}.foot{flex-direction:column}}
+</style></head><body>
+<header class="nav"><a class="logo" href="#home"><b>◢</b>TESLA</a><nav class="navlinks"><a href="#home">Overview</a><a href="#strategy">Strategy</a><a href="#fourps">4Ps</a><a href="#brand">Brand</a><a href="#swot">SWOT</a><a href="#challenge">Challenge</a></nav><a class="pill" href="#strategy">Explore ↗</a></header>
+<main><section class="hero" id="home"><div class="copy"><div class="eyebrow">Marketing case study / 2026</div><h1>TESLA<span>.</span><br>MARKETING<br>LAB</h1><div class="tagline">Innovation. Branding. A global movement.</div><p>Explore how Tesla positions its brand, communicates value, and competes in the electric vehicle market. An interactive student case study.</p><a class="btn" href="#strategy">Start exploring →</a><a class="ghost" href="#challenge">Make a decision</a></div><div class="car"><img src="tesla-hero.png" alt="Dark electric performance sedan in a dramatic studio setting"><small>DESIGN / TECHNOLOGY / ELECTRIC MOBILITY</small></div></section>
+<div class="cards" id="strategy"><article class="card reveal"><h3><span class="icon">◈</span>SWOT ANALYSIS</h3><div class="quad"><div><b>Strengths</b><span>Brand recognition and technology focus</span></div><div><b>Weaknesses</b><span>Affordability and reputation exposure</span></div><div><b>Opportunities</b><span>EV adoption and energy solutions</span></div><div><b>Threats</b><span>Competition and market pressure</span></div></div><p class="muted">Explore the strategic factors shaping the brand.</p></article><article class="card reveal" id="fourps"><h3><span class="icon">▥</span>THE MARKETING MIX / 4Ps</h3><div class="quad"><div><b>Product</b><span>EVs, software, charging ecosystem</span></div><div><b>Price</b><span>Pricing, value, accessibility</span></div><div><b>Place</b><span>Direct channels and delivery</span></div><div><b>Promotion</b><span>Digital presence and earned media</span></div></div></article><article class="card reveal" id="brand"><h3><span class="icon">✦</span>BRAND & PERSONAL BRANDING</h3><p class="muted">Tesla's identity is associated with electric mobility, technology, and innovation. Elon Musk's public profile can increase attention while also creating reputational risks.</p></article></div>
+<section class="section reveal" id="swot"><div class="eyebrow">Strategic framework / 01</div><h2>Four lenses. One brand.</h2><p class="muted">A concise SWOT framework for classroom discussion. Validate points with current evidence before presenting them as measured findings.</p><div class="tiles"><div class="tile"><h3>Strengths</h3><p>Recognizable brand identity, EV experience, software and charging ecosystem.</p></div><div class="tile"><h3>Weaknesses</h3><p>Reputation exposure, focused product range, customer experience challenges to monitor.</p></div><div class="tile"><h3>Opportunities</h3><p>EV adoption, energy storage, software services, and new customer segments.</p></div><div class="tile"><h3>Threats</h3><p>Intensifying competition, regulation, price pressure, and reputational controversy.</p></div></div></section>
+<section class="poll reveal" id="challenge"><div class="pollbox"><div><div class="eyebrow">Audience decision / live poll</div><h2>Make the marketing call.</h2><p class="muted">Hypothetical scenario: as competition in the EV market grows, what should Tesla's marketing team prioritize?</p><div class="choices" id="choices"><button class="choice" data-choice="brand" disabled>A — Strengthen brand differentiation</button><button class="choice" data-choice="price" disabled>B — Compete more aggressively on price</button><button class="choice" data-choice="digital" disabled>C — Improve the digital customer experience</button><button class="choice" data-choice="loyalty" disabled>D — Invest in customer loyalty and advocacy</button></div><p class="note" id="note" aria-live="polite">Shared voting is not connected yet. Follow SETUP-POLL.txt to enable one vote per anonymous sign-in.</p></div><div class="results"><div class="eyebrow">Live audience results</div><div id="results"><p class="muted">Connect the poll service to display shared percentages.</p></div><p class="note" id="total">Waiting for poll connection…</p></div></div></section></main><footer class="foot"><span>TESLA MARKETING LAB / INDEPENDENT STUDENT CASE STUDY</span><span>NOT AFFILIATED WITH TESLA, INC. · ILLUSTRATIVE ANALYSIS</span></footer>
 <script>
-const explanations={
- brand:"Brand differentiation can reinforce a distinctive identity and perceived value. The risk is that brand promises must be supported by product quality and customer experience.",
- price:"Price competition may attract price-sensitive buyers and improve accessibility. The risk is margin pressure and making price the main reason customers choose the brand.",
- digital:"A stronger digital experience can reduce friction across research, purchase, and ownership. The risk is investing in technology without solving the customer problems that matter most.",
- loyalty:"Customer loyalty and advocacy can support retention and word-of-mouth. The risk is that loyalty requires consistent service, reliability, and trust—not just campaigns."
-};
-document.querySelectorAll("[data-answer]").forEach(button=>button.addEventListener("click",()=>{
- document.querySelectorAll("[data-answer]").forEach(b=>b.classList.remove("selected"));
- button.classList.add("selected");
- const box=document.getElementById("result");
- box.textContent=explanations[button.dataset.answer];
- box.style.display="block";
-}));
-</script>
-</body></html>
+const revealEls=document.querySelectorAll('.reveal');if('IntersectionObserver'in window){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target)}}),{threshold:.12});revealEls.forEach(e=>io.observe(e))}else revealEls.forEach(e=>e.classList.add('show'));
+// Configure Firebase below to enable a shared live poll across audience devices.
+const firebaseConfig={apiKey:'PASTE_API_KEY',authDomain:'PASTE_PROJECT.firebaseapp.com',projectId:'PASTE_PROJECT_ID',appId:'PASTE_APP_ID'};
+const labels={brand:'Brand differentiation',price:'Competitive pricing',digital:'Digital experience',loyalty:'Customer loyalty'};const choices=document.getElementById('choices'),note=document.getElementById('note'),results=document.getElementById('results'),total=document.getElementById('total');
+function renderVotes(votes){const c={brand:0,price:0,digital:0,loyalty:0};votes.forEach(v=>{if(c[v.choice]!==undefined)c[v.choice]++});const n=votes.length;results.innerHTML='';Object.keys(c).forEach(k=>{const p=n?Math.round(c[k]/n*100):0;const r=document.createElement('div');r.className='row';r.innerHTML=`<div class="rowtop"><span>${labels[k]}</span><b>${p}%</b></div><div class="track"><div class="fill" style="width:${p}%"></div></div>`;results.appendChild(r)});total.textContent=`${n} vote${n===1?'':'s'} recorded`;}
+async function initPoll(){if(firebaseConfig.apiKey.startsWith('PASTE')){note.textContent='To activate voting for everyone, follow the simple Firebase setup in SETUP-POLL.txt.';return}try{const [appM,authM,dbM]=await Promise.all([import('https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'),import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js'),import('https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js')]);const app=appM.initializeApp(firebaseConfig),auth=authM.getAuth(app),db=dbM.getFirestore(app),cred=await authM.signInAnonymously(auth),ref=dbM.doc(db,'votes',cred.user.uid);const old=await dbM.getDoc(ref);if(old.exists()){choices.querySelectorAll('button').forEach(b=>{b.disabled=true;if(b.dataset.choice===old.data().choice)b.classList.add('selected')});note.textContent='Your vote is already recorded. You can view results but cannot vote again with this sign-in.'}else choices.querySelectorAll('button').forEach(b=>b.disabled=false);const col=dbM.collection(db,'votes');const refresh=async()=>{const s=await dbM.getDocs(col);renderVotes(s.docs.map(d=>d.data()))};await refresh();dbM.onSnapshot(col,s=>renderVotes(s.docs.map(d=>d.data())));choices.querySelectorAll('button').forEach(b=>b.addEventListener('click',async()=>{b.disabled=true;try{await dbM.runTransaction(db,async tx=>{const v=await tx.get(ref);if(v.exists())throw Error('duplicate');tx.set(ref,{choice:b.dataset.choice,createdAt:dbM.serverTimestamp()})});choices.querySelectorAll('button').forEach(x=>{x.disabled=true;if(x===b)x.classList.add('selected')});note.textContent='Vote recorded. Thank you for participating.';await refresh()}catch(e){note.textContent=e.message==='duplicate'?'A vote has already been recorded.':'Could not save your vote. Please try again.';if(e.message!=='duplicate')b.disabled=false}}))}catch(e){note.textContent='Could not connect to the poll. Check the Firebase settings and Firestore rules.';console.error(e)}}initPoll();
+</script></body></html>
