@@ -222,7 +222,7 @@ section{padding:80px 5vw}}
 <footer>Tesla Marketing Case Study &middot; Student presentation &middot; Educational use only. Tesla is a trademark of Tesla, Inc.; this project is not affiliated with Tesla.</footer>
 
 <script>
-/* ---- car artwork (stylised SVG) ---- */
+/* ---- car artwork ---- */
 const wheel=(x)=>`<g><circle cx="${x}" cy="128" r="23" fill="#0b0b0d" stroke="#2a2a2e" stroke-width="3"/><circle cx="${x}" cy="128" r="11" fill="none" stroke="#e31937" stroke-width="1.5" opacity=".8"/></g>`;
 const body=(d,win)=>`<svg viewBox="0 0 440 170" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b2b30"/><stop offset="1" stop-color="#0b0b0d"/></linearGradient></defs><ellipse cx="220" cy="154" rx="190" ry="8" fill="#e31937" opacity=".25"/><path d="${d}" fill="url(#g)" stroke="#e31937" stroke-width="1.2"/><path d="${win}" fill="#15151a" stroke="rgba(255,255,255,.25)" stroke-width="1"/>${wheel(105)}${wheel(335)}</svg>`;
 const ART={
@@ -274,15 +274,14 @@ document.getElementById('prev').onclick=()=>go(-1);document.getElementById('next
 addEventListener('keydown',e=>{if(e.key==='ArrowLeft')go(-1);if(e.key==='ArrowRight')go(1)});
 fill(0);
 
-/* ---- class vote (saved in this browser only) ---- */
+/* ---- class vote ---- */
 const OPTS=[
  ['A','Radical transparency','Publish the full investigation, apologise publicly, and push a free software fix to every car.'],
  ['B','Price and incentive push','Keep the message on the product: cut prices, add free charging and extend warranties to win back buyers.'],
  ['C','Change the narrative','Launch a sustainability and innovation campaign, using owner stories and ambassadors to shift focus.']
 ];
-/* Paste your Firebase Realtime Database URL here to make voting live for everyone.
-   Example: 'https://your-project-default-rtdb.firebaseio.com'   Leave '' for local-only mode. */
-const DB_URL='';
+
+const DB_URL='https://tesla-marketing-default-rtdb.firebaseio.com/';
 const KEY='tesla_vote_v2',N=OPTS.length;
 const admin=/[?&]admin\b/.test(location.search);
 const box=document.getElementById('opts'),pm=document.getElementById('pm'),stat=document.getElementById('status');
